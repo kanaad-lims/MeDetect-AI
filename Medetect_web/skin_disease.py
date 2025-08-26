@@ -11,8 +11,8 @@ app = FastAPI()
 UPLOAD_FOLDER = "static/uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-ROBOFLOW_API_URL = "https://detect.roboflow.com/skin-disease-detection-phsnp/2"
-API_KEY = "pGJ0P7QVhYQ5vZl5rULv"
+ROBOFLOW_API_URL = "model-url"
+API_KEY = "your-api-key"
 
 # Mount static folder
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -65,3 +65,4 @@ async def post_index(request: Request, image: UploadFile = File(...)):
 @app.get("/newpage", response_class=HTMLResponse)
 async def new_page(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
